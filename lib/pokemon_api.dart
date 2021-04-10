@@ -2,30 +2,30 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 
 class Pokemons {
-  List<BasePokemon> pokemons = [];
+  List<PokemonBaseStat> pokemons = [];
 
 
   Pokemons.fromJson(List<dynamic> json) {
     if (json == null) return;
 
     json.forEach((item) {
-      final pokemon = BasePokemon.fromJson(item);
+      final pokemon = PokemonBaseStat.fromJson(item);
       pokemons.add(pokemon);
     });
   }
 }
 
-class BasePokemon {
+class PokemonBaseStat {
   String name;
   String url;
 
-  BasePokemon({
+  PokemonBaseStat({
     this.name,
     this.url,
   });
 
-  factory BasePokemon.fromJson(Map<String, dynamic> json) {
-    return BasePokemon(
+  factory PokemonBaseStat.fromJson(Map<String, dynamic> json) {
+    return PokemonBaseStat(
       name: json["name"],
       url: json["url"],
     );
@@ -34,7 +34,7 @@ class BasePokemon {
   Map<String, dynamic> toJson() => {"name": name, "url": url};
 }
 
-Pokemon pokemonFromJson(String str) => Pokemon.fromJson(json.decode(str));
+// Pokemon pokemonFromJson(String str) => Pokemon.fromJson(json.decode(str));
 
 class Pokemon {
   int id;

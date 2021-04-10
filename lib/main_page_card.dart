@@ -8,8 +8,8 @@ import 'package:pokedex_untar_535190033/color_picker.dart';
 
 class PokeCard extends StatefulWidget {
 
-  const PokeCard({Key key , this.pokeURL}) : super(key: key);
-  final String pokeURL;
+  const PokeCard({Key key , this.pokeURLs}) : super(key: key);
+  final String pokeURLs;
 
 
   @override
@@ -20,7 +20,7 @@ class _PokeCardState extends State<PokeCard> {
   Pokemon pokemon;
 
   _fetchData() async{
-    final response = await http.get(widget.pokeURL);
+    final response = await http.get(widget.pokeURLs);
     final decode = json.decode(response.body);
     final data = Pokemon.fromJson(decode);
 
@@ -64,8 +64,8 @@ class _PokeCardState extends State<PokeCard> {
 
                   ),
 
-                  Text(pokemon.name,
-                    style: GoogleFonts.londrinaShadow(fontSize: 30.0,color: Colors.white,fontWeight: FontWeight.bold),
+                  Text(pokemon.name.toUpperCase(),
+                    style: GoogleFonts.londrinaShadow(fontSize: 25.0,color: Colors.white,fontWeight: FontWeight.bold),
 
                   ),
                 ],

@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       backgroundColor: bgColor,
       appBar: AppBar(
         title: Text("PokedeX",
-        style: GoogleFonts.londrinaShadow(fontSize: 40.0),
+        style: GoogleFonts.londrinaShadow(fontSize: 40.0,fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         actions: [
@@ -115,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               children: List.generate(pokemons.pokemons.length,
                       (index) =>
                           PokeCard(
-                    pokeURL: pokemons.pokemons[index].url,
+                    pokeURLs: pokemons.pokemons[index].url,
                   )),
             ),
 
@@ -167,19 +167,19 @@ class DataSearch extends SearchDelegate<String> {
   Widget buildSuggestions(BuildContext context) {
 
     return  query.isEmpty? Container(
-       padding: EdgeInsets.all(30.0),
+       padding: EdgeInsets.symmetric(horizontal:30.0),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircleAvatar(
-                radius:150,
-                backgroundImage: AssetImage("tes7.gif"),
+                radius:100,
+                backgroundImage: AssetImage('tes7.gif'),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 30),
               Text("Search Your Pokemon Here!",
-                style: GoogleFonts.londrinaShadow(fontSize: 40.0),
+                style: GoogleFonts.londrinaShadow(fontSize: 35.0),
                 textAlign: TextAlign.center,
               ),
             ],
@@ -191,7 +191,7 @@ class DataSearch extends SearchDelegate<String> {
         _pokemons.pokemons[index].name.contains(query)?
             ListTile(
               title:  PokeCard(
-                pokeURL: _pokemons.pokemons[index].url,
+                pokeURLs: _pokemons.pokemons[index].url,
               )
           //if noone matches leave empty
             ) : Row(children: [],)
